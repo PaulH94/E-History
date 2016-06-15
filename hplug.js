@@ -6,4 +6,4 @@ function createNewTab() {
     chrome.tabs.getCurrent(function(tab){
             chrome.tabs.remove(tab.id);
     })
-}   
+}
