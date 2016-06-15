@@ -1,9 +1,22 @@
-﻿//Copyright Notice
+//Copyright Notice
 //Copyright (c) 2016 Paul Huynh
 
 function createNewTab() {
-    chrome.tabs.create({url : 'http://google.com'});
-    chrome.tabs.getCurrent(function(tab){
-            chrome.tabs.remove(tab.id);
-    })
-}
+    chrome.tabs.create({ url: 'http://google.com' });
+};
+
+function removeCurrentTab() {
+    chrome.tabs.getCurrent(function (tab) {
+        chrome.tabs.remove(tab.id, function () { });
+    });
+};
+
+document.addEventListener('DOMContentLoaded', function () {
+    createNewTab();
+    removeCurrentTab();
+    var end = Date.now();
+    var start = end - 3600000;
+    chrome.history.deleteRange({ startTime: start, endTime: end }
+        , function () { });
+
+});
