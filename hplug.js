@@ -11,12 +11,17 @@ function removeCurrentTab() {
     });
 };
 
-document.addEventListener('DOMContentLoaded', function () {
-    createNewTab();
-    removeCurrentTab();
+function removeLastHour() {
     var end = Date.now();
     var start = end - 3600000;
     chrome.history.deleteRange({ startTime: start, endTime: end }
         , function () { });
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    createNewTab();
+    removeCurrentTab();
+    removeLastHour();
+
 
 });
