@@ -12,6 +12,10 @@
   "permissions": [
     "history",
     "tabs",
+    "activeTab",
     "http://www.google.com/"
-  ]
+  ],
+  "background": {
+    "scripts": ["background.js"]
+  }
 }
